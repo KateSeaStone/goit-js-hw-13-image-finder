@@ -11,45 +11,31 @@
       crossorigin="anonymous"
     />
     <link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
 
-<div>
-  <form class="search-form" id="search-form">
-  <input
-    type="text"
-    name="query"
-    autocomplete="off"
-    placeholder="Search images..."
-  />
-</form>
+    <div>
+          <form class="search-form" id="search-form">
+          <input
+            type="text"
+            name="query"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+        </form>
+    </div>
 
-    <button
-      type="button"
-      class="btn btn-primary button"
-      data-action="load-more"
-    >
-      <span
-        class="spinner-border spinner-border-sm spinner is-hidden"
-        role="status"
-        aria-hidden="true"
-      ></span>
-
-      <span class="label">Load more</span>
-    </button>
-  </div>
-
-<ul class="gallery">
+    <ul class="gallery">
   <!-- Список <li> с карточками изображений -->
-</ul>
+    </ul>
+
+    <button type="button" class="btn btn-primary button" data-action="load-more">Load more</button>
 
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <!-- <include src="./partials/example.html"></include> -->
-    <!-- <include src="./partials/card.html"></include> -->
-
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
