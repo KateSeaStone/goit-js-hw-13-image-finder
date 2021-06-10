@@ -47,7 +47,6 @@ function fetchImages() {
     );
 }
 
-
 function renderCards(images) {
   const markup = cardsTpl(images);
   refs.imagesContainer.insertAdjacentHTML('beforeend', markup);
