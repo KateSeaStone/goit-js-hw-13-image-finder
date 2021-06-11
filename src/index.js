@@ -6,7 +6,7 @@ import LoadMoreBtn from './js/loadMoreBtn';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
-  imagesContainer: document.querySelector('.gallery'),
+  imagesContainer: document.querySelector('.gallery'),  
   //loadMoreBtn: document.querySelector('[data-action="load-more"]'),
 };
 
@@ -17,17 +17,24 @@ const loadMoreBtn = new LoadMoreBtn({
 
 const pixabayApiService = new PixabayApiService();
 
-refs.searchForm.addEventListener('input', debounce(onSearch, 500));
+//refs.searchForm.addEventListener('input', debounce(onSearch, 500));
+refs.searchForm.addEventListener('submit', onSearch);
+
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
 
 function onSearch(event) {
-  const valueInput = event.target.value;
+  event.preventDefault();
 
-  if (valueInput.trim() === '') {
+  //const valueInput = event.target.value;
+  // if (valueInput.trim() === '') {
+  //   return alert('Неверный запрос!');
+  // }
+
+  pixabayApiService.query = event.target.elements.query.value;
+
+    if (pixabayApiService.query.trim() === '') {
     return alert('Неверный запрос!');
-  }
-
-  pixabayApiService.query = event.target.value;
+  }  
 
   loadMoreBtn.show();
   pixabayApiService.resetPage();
@@ -42,6 +49,9 @@ function fetchImages() {
   pixabayApiService.fetchImages()
     .then(images => {
       renderCards(images);
+      if (images.length < 12) {
+        loadMoreBtn.hide()
+      } else 
       loadMoreBtn.enable()
     }
     );
