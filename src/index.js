@@ -23,6 +23,8 @@ refs.searchForm.addEventListener('submit', onSearch);
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
 
 function onSearch(event) {
+  // console.log(event);
+  // console.log(refs.searchForm);
   event.preventDefault();
 
   //const valueInput = event.target.value;
@@ -49,13 +51,17 @@ function fetchImages() {
   pixabayApiService.fetchImages()
     .then(images => {
       renderCards(images);
+
       if (images.length < 12) {
         loadMoreBtn.hide()
-      } else 
+      } else {
       loadMoreBtn.enable()
     }
-    );
+
+    });
 }
+
+
 
 function renderCards(images) {
   const markup = cardsTpl(images);
